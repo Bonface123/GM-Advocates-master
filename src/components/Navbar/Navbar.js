@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./Navbar.css";
 import logo from "../../assets/logo.jpeg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = ({ HomeLinkToRender }) => {
-  const [showMenu, setshowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -17,152 +16,132 @@ const Navbar = ({ HomeLinkToRender }) => {
   };
 
   return (
-    <div className="navbar">
-      <motion.div
-        initial={{ x: "-30vw" }}
-        animate={{ x: 0 }}
-        transition={{ type: "spring", duration: 4 }}
-        className="name-logo"
-      >
-        <img src={logo} alt="Logo" className="logo" />
-        <h>
-          <bold>G.M ORINA & CO. ADVOCATES</bold>
-        </h>
-      </motion.div>
-
-      <motion.div
-        initial={{ y: "-30vh" }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", duration: 4 }}
-        className="desktopMenu"
-      >
-        {HomeLinkToRender && <HomeLinkToRender />}
-        <ScrollLink
-          activeClass="active"
-          to="about"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={600}
-          className="desktopMenuListItem"
+    <nav className="bg-[#000435] w-full sticky top-0 z-50 shadow-md">
+      <div className="max-w-7xl mx-auto flex items-center justify-between p-4">
+        {/* Logo Section */}
+        <motion.div
+          initial={{ x: "-30vw" }}
+          animate={{ x: 0 }}
+          transition={{ type: "spring", duration: 4 }}
+          className="flex items-center space-x-3"
         >
-          About
-        </ScrollLink>
+          <img src={logo} alt="Logo" className="h-16 w-16 object-cover" />
+          <h1 className="text-white font-bold text-lg">G.M ORINA & CO. ADVOCATES</h1>
+        </motion.div>
 
-        <ScrollLink
-          activeClass="active"
-          to="practice-areas"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={600}
-          className="desktopMenuListItem"
+        {/* Desktop Menu */}
+        <motion.div
+          initial={{ y: "-30vh" }}
+          animate={{ y: 0 }}
+          transition={{ type: "spring", duration: 4 }}
+          className="hidden md:flex space-x-6"
         >
-          Practice Areas
-        </ScrollLink>
+          {HomeLinkToRender && <HomeLinkToRender />}
+          <ScrollLink
+            to="about"
+            smooth={true}
+            offset={-50}
+            duration={600}
+            className="text-white hover:text-gray-300 cursor-pointer"
+          >
+            About
+          </ScrollLink>
+          <ScrollLink
+            to="practice-areas"
+            smooth={true}
+            offset={-50}
+            duration={600}
+            className="text-white hover:text-gray-300 cursor-pointer"
+          >
+            Practice Areas
+          </ScrollLink>
+          <Link to="/our-people/" className="text-white hover:text-gray-300">
+            Our People
+          </Link>
+          <Link to="/articles/" className="text-white hover:text-gray-300">
+            Articles
+          </Link>
+          <Link to="/careers/" className="text-white hover:text-gray-300">
+            Careers
+          </Link>
+          <ScrollLink
+            to="contact"
+            smooth={true}
+            offset={-50}
+            duration={600}
+            className="text-white hover:text-gray-300 cursor-pointer"
+          >
+            Contact Us
+          </ScrollLink>
+          <Link to="/login" className="text-white hover:text-gray-300">
+            Login
+          </Link>
+        </motion.div>
 
-        <Link to="/our-people/" className="desktopMenuListItem">
-          Our People
-        </Link>
-        <Link to="/articles/" className="desktopMenuListItem">
-          Articles
-        </Link>
-        <Link to="/careers/" className="desktopMenuListItem">
-          Careers
-        </Link>
-        <ScrollLink
-          activeClass="active"
-          to="contact"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={600}
-          className="desktopMenuListItem"
-        >
-          Contact Us
-        </ScrollLink>
-
-        {/* Added Login link */}
-        <Link to="/login" className="desktopMenuListItem">
-          Login
-        </Link>
-      </motion.div>
-
-      <div className="mobMenu" onClick={() => setshowMenu(!showMenu)}>
-        {showMenu ? <i className="bi bi-x-lg"></i> : <i className="bi bi-list"></i>}
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button onClick={() => setShowMenu(!showMenu)} className="text-white text-2xl">
+            {showMenu ? <i className="bi bi-x-lg"></i> : <i className="bi bi-list"></i>}
+          </button>
+        </div>
       </div>
 
-      <div className="navMenu" style={{ display: showMenu ? "flex" : "none" }}>
-        <Link
-          to="/"
-          className="listItem"
-          onClick={() => setshowMenu(false)}
-        >
-          Home
-        </Link>
-        <ScrollLink
-          activeClass="active"
-          to="about"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={600}
-          className="listItem"
-          onClick={() => setshowMenu(false)}
-        >
-          About
-        </ScrollLink>
-
-        <ScrollLink
-          activeClass="active"
-          to="practice-areas"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={600}
-          className="listItem"
-          onClick={() => setshowMenu(false)}
-        >
-          Practice Areas
-        </ScrollLink>
-
-        <Link to="/our-people/" className="listItem" onClick={() => setshowMenu(false)}>
-          Our People
-        </Link>
-        <Link to="/articles/" className="listItem" onClick={() => setshowMenu(false)}>
-          Articles
-        </Link>
-        <Link to="/careers/" className="listItem" onClick={() => setshowMenu(false)}>
-          Careers
-        </Link>
-
-        <ScrollLink
-          activeClass="active"
-          to="contact"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={600}
-          className="listItem"
-          style={{
-            display: "block",
-            color: "#024677",
-            padding: "0.25rem 0",
-            width: "fit-content",
-          }}
-          onClick={() => setshowMenu(false)}
-        >
-          Contact us
-        </ScrollLink>
-
-        {/* Added Login link in mobile menu */}
-        <Link to="/login" className="listItem" onClick={() => setshowMenu(false)}>
-          Login
-        </Link>
-
-        <button className="ConsultationBtn">Get in Touch</button>
-      </div>
-    </div>
+      {/* Mobile Menu */}
+      {showMenu && (
+        <div className="md:hidden bg-white absolute top-16 left-0 w-full flex flex-col items-center space-y-4 p-4 shadow-lg border border-gray-200 rounded-lg">
+          <Link to="/" className="text-[#000435] font-semibold py-2" onClick={() => setShowMenu(false)}>
+            Home
+          </Link>
+          <ScrollLink
+            to="about"
+            smooth={true}
+            offset={-50}
+            duration={600}
+            className="text-[#000435] font-semibold py-2 cursor-pointer"
+            onClick={() => setShowMenu(false)}
+          >
+            About
+          </ScrollLink>
+          <ScrollLink
+            to="practice-areas"
+            smooth={true}
+            offset={-50}
+            duration={600}
+            className="text-[#000435] font-semibold py-2 cursor-pointer"
+            onClick={() => setShowMenu(false)}
+          >
+            Practice Areas
+          </ScrollLink>
+          <Link to="/our-people/" className="text-[#000435] font-semibold py-2" onClick={() => setShowMenu(false)}>
+            Our People
+          </Link>
+          <Link to="/articles/" className="text-[#000435] font-semibold py-2" onClick={() => setShowMenu(false)}>
+            Articles
+          </Link>
+          <Link to="/careers/" className="text-[#000435] font-semibold py-2" onClick={() => setShowMenu(false)}>
+            Careers
+          </Link>
+          <ScrollLink
+            to="contact"
+            smooth={true}
+            offset={-50}
+            duration={600}
+            className="text-[#000435] font-semibold py-2 cursor-pointer"
+            onClick={() => setShowMenu(false)}
+          >
+            Contact Us
+          </ScrollLink>
+          <Link to="/login" className="text-[#000435] font-semibold py-2" onClick={() => setShowMenu(false)}>
+            Login
+          </Link>
+          <Link to="/contact">
+            <button className="bg-[#000435] text-white px-4 py-2 rounded-lg mt-2">
+              Get in Touch
+            </button>
+          </Link>
+        </div>
+      )}
+    </nav>
   );
 };
 

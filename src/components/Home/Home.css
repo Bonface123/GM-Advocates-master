@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .slide {
@@ -29,6 +30,7 @@
   width: 25vw;
   display: flex;
   flex-direction: column;
+  
 
   justify-content: space-between;
 }
