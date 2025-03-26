@@ -31,7 +31,7 @@ import ServiceDetails from "./components/ServiceDetails";
 // 🔹 Floating Contact Menu Component
 const FloatingContactMenu = () => {
   return (
-    <div className="fixed bottom-6 left-[80%] sm:left-auto sm:right-6 transform -translate-x-1/2 sm:translate-x-0 flex flex-col gap-3 z-50">
+    <div className="fixed bottom-6 left-[87%] sm:left-auto sm:right-6 transform -translate-x-1/2 sm:translate-x-0 flex flex-col gap-3 z-50">
       
       {/* Call Button */}
       <a href="tel:+254786437754" className="bg-green-500 text-white p-2 sm:p-3 rounded-full shadow-md hover:bg-green-600 transition-all flex items-center justify-center w-10 sm:w-12 lg:w-14 h-10 sm:h-12 lg:h-14" title="Call Us">
