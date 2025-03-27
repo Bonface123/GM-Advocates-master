@@ -133,7 +133,7 @@ const ManagePracticeAreas = () => {
                 <td className="border p-2">
                   {area.image && (
                     <img
-                      src={` https://home.gmorinaadvocates.org/uploads/${area.image}`}
+                      src={`https://home.gmorinaadvocates.org/uploads/${area.image}`}
                       alt={area.title}
                       className="w-16 h-16 object-cover rounded"
                     />
